@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="Grocery">
+  <head>
+    <meta charset="utf-8">
+    <title>Grocery List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.6.0/angular-resource.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script type="text/javascript" src="script.js">
+
+    </script>
+
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div ng-controller="GroceryCtrl">
+      <h2>Total: {{getTotalGrocerys()}}</h2>
+      <form class="form-horizontal">
+        <h2>Search</h2>
+        <input type="text" ng-model="query">
+      </form>
+      <ul>
+        <li ng-repeat = "grocery in grocerys | filter:query">
+          <input type="checkbox" ng-model="grocery.done">
+          <span class = "done-{{grocery.done}}">{{grocery.item}}, {{grocery.type}}</span>
+        </li>
+      </ul>
+      <form class="form-horizontal">
+        <input type="text" ng-model="formGroceryItem">
+        Select a food group:
+        <select ng-model="formFoodGroup">
+            <option value=""></option>
+            <option value="Grain">Grain</option>
+            <option value="Vegitable">Vegitable</option>
+            <option value="Fruit">Fruit</option>
+            <option value="Meat">Meat</option>
+            <option value="Dairy">Dairy</option>
+        </select>
+        <button class="btn" ng-click="addGrocery()">Add</button>
+      </form>
+      <button class="btn" ng-click="clearCompleted()">Clear Items</button>
+    </div>
+  </body>
+</html>
