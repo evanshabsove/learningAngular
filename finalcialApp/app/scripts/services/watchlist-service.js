@@ -13,7 +13,7 @@ angular.module('stockDogApp')
     //[1] Helper: Load watchlist from local storage
     var loadModel = function () {
       var model = {
-        watchlist: localStorage['StockDog.watchlists'] ?
+        watchlists: localStorage['StockDog.watchlists'] ?
           JSON.parse(localStorage['StockDog.watchlists']) : [],
         nextId: localStorage['StockDog.nextId'] ?
           parseInt(localStorage['StockDog.nextId']) : 0
